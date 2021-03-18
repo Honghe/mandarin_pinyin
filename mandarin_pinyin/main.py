@@ -26,9 +26,11 @@ def parse(data_path, output_dir):
     print(data_dict)
     print('data_dict len: {}'.format(len(data_dict)))
 
-    with open(os.path.join(output_dir, 'dict.txt'), 'w') as f:
-        f.writelines([','.join([k, data_dict[k]]) + '\n' for k in sorted(data_dict.keys())])
+    with open(os.path.join(output_dir, 'gb2312_pinyin_dict.txt'), 'w') as f:
+        f.write('\n'.join([','.join([k, data_dict[k]]) for k in sorted(data_dict.keys())]))
 
+    with open(os.path.join(output_dir, 'bg2312_pinyin_alphabet.txt'), 'w') as f:
+        f.write('\n'.join(sorted(data_dict.keys())))
 
 if __name__ == '__main__':
     parse(GB2312_path, '../output')
